@@ -1,0 +1,493 @@
+/*
+
+All grid code is placed in a 'supports' rule (feature query) at the bottom of the CSS (Line 310).
+
+The 'supports' rule will only run if your browser supports CSS grid.
+
+Flexbox and floats are used as a fallback so that browsers which don't support grid will still recieve a similar layout.
+
+*/
+
+/* Base Styles */
+
+:root {
+  font-size: 10px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Estedad";
+  font-weight: normal;
+  src: url("./assets/fonts/estedad.woff2") format("woff2"),
+    url("./assets/fonts/estedad.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Estedad";
+  font-weight: bold;
+  src: url("./assets/fonts/estedad_bold.woff2") format("woff2"),
+    url("./assets/fonts/estedad_bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Estedad-FD";
+  font-weight: normal;
+  src: url("./assets/fonts/estedad_fd.woff2") format("woff2"),
+    url("./assets/fonts/estedad_fd.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Estedad-FD";
+  font-weight: bold;
+  src: url("./assets/fonts/estedad_bold_fd.woff2") format("woff2"),
+    url("./assets/fonts/estedad_bold_fd.ttf") format("truetype");
+}
+
+body {
+  font-family: "Estedad-FD", Arial, sans-serif;
+  min-height: 100vh;
+  background-color: #fafafa;
+  color: #262626;
+  padding-bottom: 3rem;
+}
+
+img {
+  display: block;
+}
+
+.container {
+  max-width: 93.5rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+  direction: rtl;
+  text-align: right;
+}
+
+.btn {
+  display: inline-block;
+  font: inherit;
+  background: none;
+  border: none;
+  color: inherit;
+  padding: 0;
+  cursor: pointer;
+}
+
+.btn:focus {
+  outline: 0.5rem auto #4d90fe;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+/* Profile Section */
+
+.profile-image img {
+  border-radius: 70%;
+}
+
+.profile-user-name {
+  display: inline-block;
+  font-size: 3.2rem;
+  font-weight: 300;
+}
+
+.profile-edit-btn {
+  font-size: 1.4rem;
+  line-height: 1.8;
+  border: 0.1rem solid #dbdbdb;
+  border-radius: 0.3rem;
+  padding: 0 2.4rem;
+  margin-left: 2rem;
+}
+
+.profile-settings-btn {
+  font-size: 2rem;
+  margin-left: 1rem;
+}
+
+.profile-stats {
+  margin-top: 2.3rem;
+}
+
+.profile-stats li {
+  display: inline-block;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  margin-right: 4rem;
+  cursor: pointer;
+}
+
+.profile-stats li:last-of-type {
+  margin-right: 0;
+}
+
+.profile-bio {
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.5;
+  margin-top: 2.3rem;
+}
+
+.profile-real-name,
+.profile-stat-count,
+.profile-edit-btn {
+  font-weight: 400;
+}
+
+/* Gallery Section */
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -1rem -1rem;
+  padding-bottom: 3rem;
+}
+
+.gallery-item {
+  position: relative;
+  flex: 1 0 22rem;
+  margin: 1rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.gallery-item:hover .gallery-item-info,
+.gallery-item:focus .gallery-item-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.gallery-item-info {
+  display: none;
+}
+
+.gallery-item-info li {
+  display: inline-block;
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+
+.gallery-item-likes {
+  margin-right: 2.2rem;
+}
+
+.gallery-item-type {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2.5rem;
+  text-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.1);
+}
+
+.fa-clone,
+.fa-comment {
+  transform: rotateY(180deg);
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-stats {
+  order: 1;
+  margin-top: 1.5rem;
+}
+
+.profile-stats ul {
+  display: flex;
+  text-align: center;
+  padding: 1.2rem 0;
+  border-top: 0.1rem solid #dadada;
+  border-bottom: 0.1rem solid #dadada;
+}
+
+.profile-stats li {
+  font-size: 1.4rem;
+  flex: 1;
+  margin: 0;
+}
+
+.profile-stat-count {
+  display: block;
+}
+
+.profile {
+  margin: 0 60px 0 10px;
+}
+
+/* Media Query */
+
+@media screen and (max-width: 40rem) {
+  .h-470 {
+    height: 470px;
+  }
+  .h-500 {
+    height: 500px;
+  }
+
+  .profile {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 4rem 0;
+    margin: 0px;
+  }
+
+  .profile > * {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .profile-caption {
+    margin-top: -30px;
+  }
+
+  .profile-title,
+  .profile-subtitle1,
+  .profile-subtitle2 {
+    text-align: center;
+  }
+
+  .profile::after {
+    display: none;
+  }
+
+  .profile-image > img {
+    margin: auto;
+  }
+  .profile-image,
+  .profile-user-settings,
+  .profile-bio,
+  .profile-stats {
+    float: none;
+    width: auto;
+  }
+
+  .profile-user-settings {
+    flex-basis: calc(100% - 10.7rem);
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+
+  .profile-user-name {
+    font-size: 2.2rem;
+  }
+
+  .profile-edit-btn {
+    order: 1;
+    padding: 0;
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .profile-edit-btn {
+    margin-left: 0;
+  }
+
+  .profile-bio {
+    font-size: 1.4rem;
+    margin-top: 1.5rem;
+  }
+
+  .profile-edit-btn,
+  .profile-bio,
+  .profile-stats {
+    flex-basis: 100%;
+  }
+}
+
+/* Box */
+.call-box {
+  -webkit-perspective: 800;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.call-box:hover .flip-box {
+  -webkit-transform: rotatey(-180deg);
+}
+
+.call-box .flip-box {
+  width: 100%;
+  height: 100%;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transition: 0.5s;
+}
+
+.call-box .flip-box .face {
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  z-index: 2;
+}
+
+.call-box .flip-box .front {
+  position: absolute;
+  z-index: 1;
+  background: black;
+  cursor: pointer;
+  user-select: none;
+}
+
+.call-box .flip-box .back {
+  -webkit-transform: rotatey(-180deg);
+  background: black;
+  cursor: pointer;
+  user-select: none;
+  font-size: small;
+}
+
+.front-caption {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: #00000099;
+  font-size: x-large;
+  padding: 10px 10px 0px 10px;
+}
+
+.back-content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: #00000099;
+}
+
+.back-caption {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: justify;
+  line-height: 1.6;
+  font-size: medium;
+}
+
+/* skills */
+
+.skills-info.skills-second-style {
+  margin-bottom: 30px;
+}
+
+.skills-info.skills-second-style h4 {
+  font-size: 13px;
+  line-height: 1.1em;
+  position: relative;
+  float: left;
+  margin: 0 0 4px;
+}
+
+.skills-second-style .skill-container {
+  position: relative;
+  display: inline-block;
+  background-color: #222;
+  border: 1px solid #04b4e0;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 10px;
+  margin-bottom: 8px;
+  width: 100%;
+  direction: ltr;
+}
+
+.skills-second-style .skill-container:before {
+  content: "";
+  position: absolute;
+  background-color: #04b4e0;
+}
+
+.skills-second-style .skill-value {
+  font-size: 11px;
+  line-height: 1.1em;
+  position: relative;
+  float: right;
+  margin: 0 0 4px;
+  color: #aaa;
+}
+
+.skills-second-style .skill-percentage {
+  background-color: #04b4e0;
+  border: 2px solid #222;
+  -moz-border-radius: 9px;
+  -webkit-border-radius: 9px;
+  border-radius: 9px;
+  height: 8px;
+  padding: 0;
+}
+
+.skills-second-style .skill-container.skill-1 .skill-percentage {
+  width: 95%;
+}
+
+.skills-second-style .skill-container.skill-2 .skill-percentage {
+  width: 65%;
+}
+
+.skills-second-style .skill-container.skill-3 .skill-percentage {
+  width: 80%;
+}
+
+.skills-second-style .skill-container.skill-4 .skill-percentage {
+  width: 90%;
+}
+
+.skills-second-style .skill-container.skill-5 .skill-percentage {
+  width: 95%;
+}
+
+.skills-second-style .skill-container.skill-6 .skill-percentage {
+  width: 85%;
+}
+
+.skills-second-style .skill-container.skill-7 .skill-percentage {
+  width: 100%;
+}
+
+.skills-second-style .skill-container.skill-8 .skill-percentage {
+  width: 75%;
+}
+
+.skills-second-style .skill-container.skill-9 .skill-percentage {
+  width: 90%;
+}
+
+.knowledges {
+  list-style: none;
+}
+
+.knowledges li {
+  display: inline-block;
+  background-color: #04b4e0;
+  border-radius: 3px;
+  color: #fff;
+  padding: 1px 10px;
+  margin: 3px 2px;
+  font-size: 13px;
+}
